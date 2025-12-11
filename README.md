@@ -3,7 +3,7 @@
 This project is a multi-agent AI system built using open-source models in Python. It demonstrates coordination between multiple AI agents specialized in research, calculations, finance, and computer vision—all without relying on paid APIs. The system also includes a Gradio-based interactive interface for real-time experimentation.
 
 ## Features
-1.Research Agent
+## Research Agent
 Searches the web and summarizes articles.
 Analyzes information and generates structured reports.
 Useful for news, research topics, and content summarization.
@@ -11,7 +11,8 @@ Useful for news, research topics, and content summarization.
 ## Calculator Agent
 Performs arithmetic, factorial, square roots, prime checks, and more.
 Handles complex expressions in a single query.
-Finance Agent
+
+## Finance Agent
 Fetches stock prices, company profiles, news, and price targets.
 Uses open-source financial data tools (like yfinance).
 
@@ -49,17 +50,17 @@ pip install -r requirements.txt
 Run the Colab notebook.
 Interact with the multi-agent system using the provided Gradio interface.
 
-### Example queries:
-# Research
+## Example queries:
+### Research
 team.run("Tesla stock news")
-# Calculator
+### Calculator
 team.run("factorial(5) + sqrt(16)")
-# Finance
+### Finance
 team.run("Stock info TSLA")
-# Vision
+### Vision
 team.run("Detect objects in image")
 
-### Project Highlights
+#### Project Highlights
 
 => Open-source models only: no paid APIs required.
 =>Multi-agent coordination: different agents specialize in tasks and can work together.
