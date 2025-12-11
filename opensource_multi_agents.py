@@ -4,12 +4,19 @@ drive.mount('/content/drive')
 from google.colab import files
 uploaded = files.upload()  # Choose your image
 
+import nltk
+nltk.download('punkt')
+
 import math
-import yfinance as yf
+from duckduckgo_search import DDGS
 from newspaper import Article
-from googlesearch import search
 from transformers import pipeline
+import gradio as gr
+import yfinance as yf
 from ultralytics import YOLO
+from googlesearch import search
+import cv2
+
 
 # ------------------- LLM Research Agent -------------------
 class LLMResearchAgent:
@@ -28,9 +35,14 @@ class LLMResearchAgent:
 class WebAgent:
     def search(self, query, max_results=5):
         try:
-            return list(search(query, num_results=max_results))
+            with DDGS() as ddgs:
+                results = ddgs.text(query, max_results=max_results)
+                # Extract URLs only
+                urls = [r['href'] for r in results]
+            return urls
         except:
             return ["Web search failed"]
+
 
 # ------------------- News Agent -------------------
 class NewsAgent:
@@ -106,26 +118,3 @@ class AgentTeam:
             articles_text = "\n".join([self.news_agent.read_article(url) for url in urls if self.news_agent.read_article(url)])
             return self.research_agent.summarize(articles_text)
 
-# Team Of Agents
-
-team = AgentTeam()
-
-# --- Research Example ---
-query = "Tesla stock news"
-print("=== RESEARCH SUMMARY ===")
-print(team.run(query))
-
-# --- Calculator Example ---
-query2 = "factorial(5) + sqrt(16)"
-print("=== CALCULATOR RESULT ===")
-print(team.run(query2))
-
-# --- Finance Example ---
-query3 = "Stock info TSLA"
-print("=== FINANCE INFO ===")
-print(team.run(query3))
-
-# --- Vision Example ---
-query4 = "Detect objects in image"
-print("=== OBJECT DETECTION ===")
-print(team.run(query4))
