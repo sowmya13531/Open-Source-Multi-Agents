@@ -1,0 +1,4 @@
+# Google Colab Required Packages
+!pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+!pip install transformers newspaper3k lxml_html_clean googlesearch-python yfinance ultralytics opencv-python
+!pip install gradio
