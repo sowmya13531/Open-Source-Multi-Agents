@@ -106,6 +106,8 @@ class AgentTeam:
             articles_text = "\n".join([self.news_agent.read_article(url) for url in urls if self.news_agent.read_article(url)])
             return self.research_agent.summarize(articles_text)
 
+# Team Of Agents
+
 team = AgentTeam()
 
 # --- Research Example ---
@@ -127,11 +129,3 @@ print(team.run(query3))
 query4 = "Detect objects in image"
 print("=== OBJECT DETECTION ===")
 print(team.run(query4))
-
-import gradio as gr
-
-def assistant(query):
-    return team.run(query)
-
-gr.Interface(fn=assistant, inputs="text", outputs="text", title="Open-Source Multi-Agent AI").launch()
-
