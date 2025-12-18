@@ -37,7 +37,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/sowmya13531/Open-Source-Multi-Agents.git
-Open-Source-Multi-Agents
+cd Open-Source-Multi-Agents
 ```
 
 ### Install dependencies:
